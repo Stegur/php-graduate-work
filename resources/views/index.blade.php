@@ -8,21 +8,33 @@
 </head>
 <body>
 <div class="container">
-
     <ul class="list-group">
+
         <li class="list-group-item d-flex justify-content-between align-items-center">Категории:</li>
-        {{--@foreach($themes as $theme)--}}
-            <li class="list-group-item d-flex justify-content-between align-items-center">Название темы
+        @foreach($subjects as $subject)
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ $subject->body }}
                 <span class="badge badge-primary badge-pill">0</span>
             </li>
-        {{--@endforeach--}}
+        @endforeach
+
     </ul>
 
     <ul>
         @foreach($questions as $question)
-            <li>{{ $question}}</li>
+            <li>{{ $question->body }}</li>
         @endforeach
     </ul>
+
+
+
+    <ol>
+        @foreach($answers as $answer)
+            <li>{{ $answer->body }}</li>
+        @endforeach
+    </ol>
+
+
 </div>
 </body>
 </html>

@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-   $questions = DB::table('questions')->pluck('body');
-   return view('index', compact('questions'));
-});
+//Route::get('/', function () {
+//   $questions = App\Question::all();
+//   $answers = App\Answer::all();
+//   $subjects = App\Subject::all();
+//   return view('index', compact('subjects', compact('questions')));
+//});
+
+Route::get('/', 'MainController@show');
+//Route::get('/', 'QuestionsController@show');
+//Route::get('/', 'AnswersController@show');
