@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   $questions = DB::table('questions')->pluck('body');
+   return view('index', compact('questions'));
 });
