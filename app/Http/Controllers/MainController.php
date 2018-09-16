@@ -23,7 +23,8 @@ class MainController extends Controller
         
         $questionArray = [];
         foreach ($questions as $question) {
-            $questionArray[$question->subject][$question->question] = $question->answer;
+            $questionArray[$question->subject]['id'] = $question->subject_id;
+            $questionArray[$question->subject]['question'][]=$question;
         }
         return view('index')->with('questions', $questionArray)->with('subjects', $subjects);
     }
