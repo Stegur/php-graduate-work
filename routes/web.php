@@ -11,13 +11,8 @@
 |
 */
 
-//Route::get('/', function () {
-//   $questions = App\Question::all();
-//   $answers = App\Answer::all();
-//   $subjects = App\Subject::all();
-//   return view('index', compact('subjects', compact('questions')));
-//});
+use Illuminate\Http\Request;
 
 Route::get('/', 'MainController@show');
-//Route::get('/', 'QuestionsController@show');
-//Route::get('/', 'AnswersController@show');
+Route::get('/add', 'MainController@showCategory');
+Route::post('/add', 'MainController@add');

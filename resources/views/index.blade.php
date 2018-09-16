@@ -1,40 +1,55 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
-    <ul class="list-group">
+@extends('layout')
 
-        <li class="list-group-item d-flex justify-content-between align-items-center">Категории:</li>
-        @foreach($subjects as $subject)
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ $subject->body }}
-                <span class="badge badge-primary badge-pill">0</span>
-            </li>
-        @endforeach
-
-    </ul>
-
-    <ul>
-        @foreach($questions as $question)
-            <li>{{ $question->body }}</li>
-        @endforeach
-    </ul>
+@section('title')
+    <title>Вопросы и ответы</title>
+@endsection
 
 
+@section('content')
+    <div class="header">
+        <h1 class="text-center m-3 text-primary">Questions & Answers</h1>
+        <a href="{{ url('add') }}" class="nav-link bg-primary text-white float-right mb-3">Задать вопрос</a>
+    </div>
+    {{--todo Сделать сообщение после добавлнеия нового вопроса--}}
+    {{--@if($done)--}}
 
-    <ol>
-        @foreach($answers as $answer)
-            <li>{{ $answer->body }}</li>
-        @endforeach
-    </ol>
+    {{--<div class="alert-primary">--}}
+    {{--{{ $done }}--}}
+    {{--</div>--}}
 
+    {{--@endif--}}
 
-</div>
-</body>
-</html>
+    <table class="table">
+        <tr class="row">
+            <td class="col-3">
+                <ul class="list-group position-fixed">
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-primary text-white">
+                        Категории:
+                    </li>
+                    @foreach($subjects as $subject)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="#{{ $subject->id }}">{{ $subject->body }}</a>
+                            <span class="ml-2 badge badge-primary badge-pill">{{ $subject->id }}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </td>
+
+            <td class="col-9">
+                @foreach($questions as $subject => $rows)
+
+                    <div class="card-header text-center" id="">{{ $subject }}</div>
+
+                    @foreach($rows as $question => $answer)
+                        <details class="list-group-item bg-primary text-white text-justify">
+                            <summary>{{ $question }}</summary>
+                            <p class="bg-light text-dark p-3">{{ $answer }}</p>
+                        </details>
+                    @endforeach
+                    <div class="m-5"></div>
+                @endforeach
+            </td>
+        </tr>
+    </table>
+@endsection
