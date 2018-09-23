@@ -18,6 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('subject_id');
             $table->string('question');
             $table->text('answer')->nullable();
+            $table->boolean('is_visible')->default(1);
             $table->string('login');
             $table->string('email');
             $table->timestamps();

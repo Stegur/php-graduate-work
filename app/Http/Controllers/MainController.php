@@ -19,6 +19,7 @@ class MainController extends Controller
             ->from('questions as q')
             ->join('subjects as s', 'q.subject_id', '=', 's.id')
             ->where('q.answer', '<>', 'null')
+            ->where('q.is_visible', '=', 1)
             ->get();
         
         $questionArray = [];
