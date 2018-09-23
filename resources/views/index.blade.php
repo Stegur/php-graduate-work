@@ -10,14 +10,7 @@
         <h1 class="text-center m-3 text-primary">Questions & Answers</h1>
         <a href="{{ url('add') }}" class="nav-link bg-primary text-white float-right mb-3">Задать вопрос</a>
     </div>
-    {{--todo Сделать сообщение после добавлнеия нового вопроса--}}
-    {{--@if($done)--}}
 
-    {{--<div class="alert-primary">--}}
-    {{--{{ $done }}--}}
-    {{--</div>--}}
-
-    {{--@endif--}}
 
     <table class="table">
         <tr class="row">
@@ -37,6 +30,14 @@
             </td>
 
             <td class="col-9">
+                {{--todo Сделать сообщение после добавлнеия нового вопроса--}}
+                {{--@if(isset($done))--}}
+
+                    {{--<div class="bg-success text-white text-center">--}}
+                        {{--{{ $done  }}--}}
+                    {{--</div>--}}
+
+                {{--@endif--}}
                 @foreach($questions as $subject => $value)
                     <div class="card-header text-center" id="{{ $value['id'] }}">{{ $subject }}</div>
                     @foreach($value['question'] as $question)

@@ -56,8 +56,8 @@ class MainController extends Controller
         $question->question = $request->question;
         $question->save();
 
-//        $done = "как только на Ваш вопрос ответит администратор, он появится в списке в соответствующей категории";
+        $done = "Ваш вопрос добавлен, как только на него ответит администратор, он появится в списке в соответствующей категории";
         
-        return redirect('/');
+        return redirect('/')->with('done', $done);
     }
 }

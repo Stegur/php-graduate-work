@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::get('/', 'MainController@show');
 Route::get('/add', 'MainController@showCategory');
 Route::post('/add', 'MainController@add');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
