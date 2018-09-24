@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Subject;
+use App\Question;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $admins = User::all();
+        $subjects = Subject::all();
+        $questions = Question::all();
+        return view('home', [
+            'admins' => $admins,
+            'subjects' => $subjects,
+            'questions' => $questions
+        ]);
     }
+    
+//    public static function seeAdmins() {
+//        $admins = User::all();
+//        return $admins;
+////        return view('/home')->with('admins', $admins);
+//    }
 }
