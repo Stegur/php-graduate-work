@@ -11,19 +11,18 @@
                     <div class="card-body">
                         <table class="table">
                             <tr class="row">
-                                <td class="col-2">Логин</td>
+                                <td class="col-4">Логин</td>
                                 <td class="col-5">email</td>
                                 <td class="col-3">Пароль</td>
-                                <td class="col-2">Функции</td>
                             </tr>
                             @foreach($admins as $admin)
                                 <tr class="row">
-                                    <td class="col-2">{{ $admin->name }}</td>
+                                    <td class="col-4">{{ $admin->name }}</td>
                                     <td class="col-5">{{ $admin->email }}</td>
                                     <td class="col-3"></td>
-                                    <td class="col-2"></td>
                                 </tr>
                             @endforeach
+                            <td class="col"><a href="{{ url('/addadmin') }}">Добавить администратора</a></td>
                         </table>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
     <div class="card-body">
         @include('errors')
     </div>
-    <div class="float-right">
+    <div class="clearfix">
         <a class="nav-link bg-primary text-white float-right" href="{{ url('/') }}">Вернуться к вопросам</a>
     </div>
 

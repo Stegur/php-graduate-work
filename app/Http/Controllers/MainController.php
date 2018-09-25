@@ -36,7 +36,7 @@ class MainController extends Controller
         return view('add')->with('subjects', $subjects);
     }
     
-    public function add(Request $request)
+    public function addCategory(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'login' => 'required|max:50',

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Subject;
 use App\Question;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -36,9 +37,34 @@ class HomeController extends Controller
         ]);
     }
     
-//    public static function seeAdmins() {
-//        $admins = User::all();
-//        return $admins;
-////        return view('/home')->with('admins', $admins);
-//    }
+    public function newAdmin() {
+    
+        return view('/addadmin');
+    }
+    
+    public function addAdmin(Request $request) {
+    
+        $validatior = Validator::make($request->all(), [
+           'login' => 'required|max:50',
+           'email' => 'required',
+           'password' => 'required|min:6'
+        ]);
+        
+        if ($validatior->fails()) {
+            return redirect('addadmin')
+                ->withInput()
+                ->withErrors($validatior);
+        }
+//        todo как отлавливать ошибкт при создании нового администратора, email существует
+        
+        $admin = new User();
+        $admin->name = $request->login;
+        $admin->email = $request->email;
+        $admin->password = bcrypt($request->password);
+        $admin->save();
+        
+        $newAdminSuccess = 'Вы успешно добавили нового администратора';
+        
+        return view('/addadmin')->with('newAdminSuccess', $newAdminSuccess);
+    }
 }

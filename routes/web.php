@@ -13,9 +13,16 @@
 
 use Illuminate\Http\Request;
 
+//Cliens side
 Route::get('/', 'MainController@show');
 Route::get('/add', 'MainController@showCategory');
-Route::post('/add', 'MainController@add');
+Route::post('/add', 'MainController@addCategory');
+
+//Admins side
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Add admin
+Route::get('/addadmin', 'HomeController@newAdmin');
+Route::post('/addadmin', 'HomeController@addAdmin');
