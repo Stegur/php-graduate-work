@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 //Cliens side
 Route::get('/', 'MainController@show');
 Route::get('/add', 'MainController@showCategory');
-Route::post('/add', 'MainController@addCategory');
+Route::post('/add', 'MainController@addQuestion');
 
 //Admins side
 Auth::routes();

@@ -6,10 +6,13 @@
     -center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Администраторы</div>
+                    <div class="card-header clearfix">Администраторы <a class="float-right" href="{{ url('/addadmin') }}">Добавить администратора</a>
+                    </div>
 
                     <div class="card-body">
                         <table class="table">
+
+
                             <tr class="row">
                                 <td class="col-4">Логин</td>
                                 <td class="col-5">email</td>
@@ -22,13 +25,13 @@
                                     <td class="col-3"></td>
                                 </tr>
                             @endforeach
-                            <td class="col"><a href="{{ url('/addadmin') }}">Добавить администратора</a></td>
                         </table>
                     </div>
                 </div>
 
                 <div class="card mt-5">
-                    <div class="card-header">Темы</div>
+                    <div class="card-header clearfix">Темы <a class="float-right" href="{{ url('/addsubject') }}">Добавить тему</a>
+                    </div>
 
                     <div class="card-body">
                         <table class="table">
@@ -45,8 +48,9 @@
                 </div>
 
                 <div class="card mt-5">
-                    <div class="card-header">Вопросы</div>
-
+                    {{--todo сделать подсчет вопросов без ответа--}}
+                    <div class="card-header clearfix">Вопросы <a class="float-right" href="{{ url('/answers') }}">Вопросы без ответа</a>
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <tr class="row">

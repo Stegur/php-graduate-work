@@ -55,16 +55,16 @@ class HomeController extends Controller
                 ->withInput()
                 ->withErrors($validatior);
         }
-//        todo как отлавливать ошибкт при создании нового администратора, email существует
+//        todo как отлавливать ошибки при создании нового администратора, email существует
         
         $admin = new User();
         $admin->name = $request->login;
         $admin->email = $request->email;
         $admin->password = bcrypt($request->password);
         $admin->save();
+
+//       todo $newAdminSuccess = 'Вы успешно добавили нового администратора';
         
-        $newAdminSuccess = 'Вы успешно добавили нового администратора';
-        
-        return view('/addadmin')->with('newAdminSuccess', $newAdminSuccess);
+        return redirect('/home');
     }
 }
