@@ -6,7 +6,9 @@
 - [Bootstrap](https://getbootstrap.com)
 
 ### Seeds 
- For use seeds please run ```php artisan db:seed  --class=Admin```
+ For use seeds please run 
+ 
+ ```php artisan db:seed  --class=Admin``` and ```php artisan db:seed  --class=Subject```
  
  Admin panel - ```/home```
  
