@@ -16,7 +16,13 @@ class MainController extends Controller
         $subjects = Subject::all();
 
 //        todo Реализовать подсчет колличества вопросов в теме
-
+        
+      /*  $questionsCount = Question::select('COUNT(*) as questionsCount', 's.body' )
+            ->from('questions as q')
+            ->join('subjects as s', 'q.subject_id', '=', 's.id')
+            ->where('q.answer', '<>', 'null')
+            ->where('q.is_visible', '=', 1)
+            ->get();*/
 
 //        Выборка всех вопросов с ответами и видимостью
 
@@ -68,6 +74,6 @@ class MainController extends Controller
 
 //       todo $done = "Ваш вопрос добавлен, как только на него ответит администратор, он появится в списке в соответствующей категории";
 
-        return redirect('/')->with('done', $done);
+        return redirect('/');
     }
 }

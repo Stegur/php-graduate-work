@@ -18,18 +18,22 @@ Route::get('/', 'MainController@show');
 Route::get('/add', 'MainController@showCategory');
 Route::post('/add', 'MainController@addQuestion');
 
-//Admins side
+//Home
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Add admin
+//Admins
+Route::get('/admins/', 'AdminsController@index');
+
 Route::get('/addadmin', 'HomeController@newAdmin');
-Route::post('/addadmin', 'HomeController@addAdmin');
+Route::post('/addadmin', 'HomeController@addAdmin');/////////////////////////////
 
-//Change password
+Route::post('/home', 'HomeController@changePassword');///////////////////////////
 
-Route::post('/home', 'HomeController@changePassword');
+//Questions
+Route::get('/questions/', 'QuestionsController@index');
 
 
-//todo как сделать роут на на другой метод контроллера при том же URL
+//Subjects
+Route::get('/subjects/', 'SubjectsController@index');
