@@ -6,7 +6,8 @@
     -center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header clearfix">Администраторы <a class="float-right" href="{{ url('/addadmin') }}">Добавить администратора</a>
+                    <div class="card-header clearfix">Администраторы
+                        <a class="float-right" href="{{ url('/addadmin') }}">Добавить администратора</a>
                     </div>
 
                     <div class="card-body">
@@ -15,14 +16,20 @@
 
                             <tr class="row">
                                 <td class="col-4">Логин</td>
-                                <td class="col-5">email</td>
-                                <td class="col-3">Пароль</td>
+                                <td class="col-4">email</td>
+                                <td class="col-4">Пароль</td>
                             </tr>
                             @foreach($admins as $admin)
                                 <tr class="row">
                                     <td class="col-4">{{ $admin->name }}</td>
-                                    <td class="col-5">{{ $admin->email }}</td>
-                                    <td class="col-3"></td>
+                                    <td class="col-4">{{ $admin->email }}</td>
+                                    <td class="col-4">
+                                        <form action="{{ url('/home', ['id' => $admin->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <input type="password" class="" name="newAdminPass">
+                                            <button class="btn btn-secondary mt-1">Обновить</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
@@ -30,7 +37,8 @@
                 </div>
 
                 <div class="card mt-5">
-                    <div class="card-header clearfix">Темы <a class="float-right" href="{{ url('/addsubject') }}">Добавить тему</a>
+                    <div class="card-header clearfix">Темы <a class="float-right" href="{{ url('/addsubject') }}">Добавить
+                            тему</a>
                     </div>
 
                     <div class="card-body">
@@ -49,7 +57,8 @@
 
                 <div class="card mt-5">
                     {{--todo сделать подсчет вопросов без ответа--}}
-                    <div class="card-header clearfix">Вопросы <a class="float-right" href="{{ url('/answers') }}">Вопросы без ответа</a>
+                    <div class="card-header clearfix">Вопросы <a class="float-right" href="{{ url('/answers') }}">Вопросы
+                            без ответа</a>
                     </div>
                     <div class="card-body">
                         <table class="table">

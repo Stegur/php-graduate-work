@@ -26,3 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Add admin
 Route::get('/addadmin', 'HomeController@newAdmin');
 Route::post('/addadmin', 'HomeController@addAdmin');
+
+//Change password
+
+Route::post('/home', 'HomeController@changePassword');
+
+
+//todo как сделать роут на на другой метод контроллера при том же URL
