@@ -28,7 +28,9 @@ Route::get('/admins/', 'AdminsController@index');
 
 Route::get('/addadmin', 'AdminsController@newAdmin');
 Route::post('/addadmin', 'AdminsController@addAdmin');
+
 Route::post('/adminChangePass', 'AdminsController@adminChangePass')->name('adminChangePass');
+
 Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
 
 //Questions
@@ -37,3 +39,6 @@ Route::get('/questions/', 'QuestionsController@index');
 
 //Subjects
 Route::get('/subjects/', 'SubjectsController@index');
+
+Route::get('/addSubject', 'SubjectsController@newSubject');
+Route::post('/addSubject', 'SubjectsController@addSubject');
