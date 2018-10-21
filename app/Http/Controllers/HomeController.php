@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
+    
     /**
      * Show the application dashboard.
      *
@@ -36,48 +36,6 @@ class HomeController extends Controller
             'questions' => $questions
         ]);
     }
-
-    public function newAdmin()
-    {
-
-        return view('/addadmin');
-    }
-
-    public function addAdmin(Request $request)
-    {
-
-        $validatior = Validator::make($request->all(), [
-            'login' => 'required|max:50',
-            'email' => 'required',
-            'password' => 'required|min:6'
-        ]);
-
-        if ($validatior->fails()) {
-            return redirect('addadmin')
-                ->withInput()
-                ->withErrors($validatior);
-        }
-//        todo как отлавливать ошибки при создании нового администратора, email существует
-
-        $admin = new User();
-        $admin->name = $request->login;
-        $admin->email = $request->email;
-        $admin->password = bcrypt($request->password);
-        $admin->save();
-
-//       todo $newAdminSuccess = 'Вы успешно добавили нового администратора';
-
-        return redirect('/home');
-    }
-
-//    Изменение пароля администраторов
-
-    public function changePassword(Request $request)
-    {
-        DB::table('users')
-            ->where('id', $request->id)
-            ->update(['password' => bcrypt($request->newAdminPass)]);
     
-        return redirect('/home');
-    }
+    
 }

@@ -26,10 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Admins
 Route::get('/admins/', 'AdminsController@index');
 
-Route::get('/addadmin', 'HomeController@newAdmin');
-Route::post('/addadmin', 'HomeController@addAdmin');/////////////////////////////
-
-Route::post('/home', 'HomeController@changePassword');///////////////////////////
+Route::get('/addadmin', 'AdminsController@newAdmin');
+Route::post('/addadmin', 'AdminsController@addAdmin');
+Route::post('/adminChangePass', 'AdminsController@adminChangePass')->name('adminChangePass');
+Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
 
 //Questions
 Route::get('/questions/', 'QuestionsController@index');
