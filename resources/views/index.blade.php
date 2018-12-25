@@ -23,7 +23,7 @@
                     @foreach($questions as $subject => $value)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#{{ $value['id'] }}">{{ $subject }}</a>
-                            <span class="ml-2 badge badge-primary badge-pill">{{ $value['id'] }}</span>
+                            {{--<span class="ml-2 badge badge-primary badge-pill">{{ $value['id'] }}</span>--}}
                         </li>
                     @endforeach
                 </ul>
