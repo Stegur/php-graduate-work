@@ -20,9 +20,10 @@
                                 <td class="col">Вопросов без ответа</td>
                             </tr>
                             @foreach($subjects as $name => $count)
+{{--                                @dd($count)--}}
                                 <tr class="row text-center">
-                                    <td class="col">{{ $name }}</td>
-                                    <td class="col">{{ $count['all']}}</td>
+                                    <td class="col">{{ $name }} <sup><a href="{{ route('delSubject', ['id' => $count['id']]) }}">Удалить</a></sup></td>
+                                    <td class="col">{{ $count['all'] }}</td>
                                     <td class="col">{{ $count['allWithoutHidden'] }}</td>
                                     @if(isset($count['allWithoutAnswer'])) {
                                     <td class="col">{{ $count['allWithoutAnswer'] }}</td>

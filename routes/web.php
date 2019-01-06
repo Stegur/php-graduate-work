@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Admins
-Route::get('/admins/', 'AdminsController@index');
+Route::get('/admins', 'AdminsController@index');
 
 Route::get('/addadmin', 'AdminsController@newAdmin');
 Route::post('/addadmin', 'AdminsController@addAdmin');
@@ -34,11 +34,13 @@ Route::post('/adminChangePass', 'AdminsController@adminChangePass')->name('admin
 Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
 
 //Questions
-Route::get('/questions/', 'QuestionsController@index');
+Route::get('/questions', 'QuestionsController@index');
 
 
 //Subjects
-Route::get('/subjects/', 'SubjectsController@index');
+Route::get('/subjects', 'SubjectsController@index');
 
 Route::get('/addSubject', 'SubjectsController@newSubject');
 Route::post('/addSubject', 'SubjectsController@addSubject');
+
+Route::get('/delSubject', 'SubjectsController@delSubject')->name('delSubject');

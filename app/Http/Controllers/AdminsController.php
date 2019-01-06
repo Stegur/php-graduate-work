@@ -16,15 +16,15 @@ class AdminsController extends Controller
         $admins = User::all();
         return view('/admins/index', ['admins' => $admins]);
     }
-    
-    
-    public function newAdmin() // Страница добавления нового адинистратора
+
+    // Страница добавления нового адинистратора
+    public function newAdmin()
     {
-        
         return view('/admins/addadmin');
     }
-    
-    public function addAdmin(Request $request) // Добавление нового администратора
+
+    // Добавление нового администратора
+    public function addAdmin(Request $request)
     {
         
         $validatior = Validator::make($request->all(), [
