@@ -4,30 +4,67 @@
 
 
     <div class="container">
-        <div class="row justify-
-    -center">
-            <div class="col-md-10">
+        <div class="row justify-center">
+            <div class="col-md-12">
 
 
                 <div class="card mt-5">
                     {{--todo сделать подсчет вопросов без ответа--}}
-                    <div class="card-header clearfix">Вопросы <a class="float-right" href="{{ url('/answers') }}">Вопросы
-                            без ответа</a>
+                    <div class="card-header clearfix">
+                        Вопросы
+                        <a class="float-right"
+                           href="{{ url('/answers') }}">Вопросы
+                            без
+                            ответа</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <tr class="row">
-                                <td class="col-5">Вопрос</td>
-                                <td class="col">Ответ</td>
-                                <td class="col">Видимый</td>
-                                <td class="col">Автор</td>
+                                <td class="col-5">
+                                    Вопрос
+                                </td>
+                                <td class="col">
+                                    Тема
+                                </td>
+                                <td class="col">
+                                    Статус
+                                </td>
+                                <td class="col">
+                                    Дата
+                                </td>
+                                <td class="col">
+
+                                </td>
                             </tr>
                             @foreach($questions as $question)
                                 <tr class="row">
-                                    <td class="col-5">{{ $question->question }}</td>
-                                    <td class="col">{{ $question->answer }}</td>
-                                    <td class="col">{{ ($question->is_visible > 0) ? 'Да' : 'Нет' }}</td>
-                                    <td class="col">{{ $question->login }}</td>
+                                    <td class="col-5">{{ $question->question }}
+                                        <sup><a href="{{ route('delQuestion', ['id' => $question->id]) }}">удалить</a></sup>
+                                    </td>
+                                    <td class="col">{{ $question->body }}
+                                        <sup><a href="#">изменить</a></sup>
+                                    </td>
+                                    @if($question->is_visible < 1)
+                                        <td class="col bg-light">
+                                            скрыт
+                                            <sup><a href="{{ route('isVisible', [ 'id' => $question->id, 'is_visible' => $question->is_visible]) }}">показать</a></sup>
+                                        </td>
+                                    @elseif(is_null($question->answer))
+                                        <td class="col bg-warning">
+                                            ожидает ответа <sup><a
+                                                        href="#">ответить</a></sup>
+                                        </td>
+                                    @else
+                                        <td class="col">
+                                            опубликован
+                                            <sup><a href="{{ route('isVisible', [ 'id' => $question->id, 'is_visible' => $question->is_visible]) }}">скрыть</a></sup>
+                                        </td>
+                                    @endif
+                                    <td class="col">{{ $question->date }}</td>
+                                    <td class="col small">
+                                        <a href="#">Редактировать
+                                            вопрос</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

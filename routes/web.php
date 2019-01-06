@@ -36,6 +36,9 @@ Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
 //Questions
 Route::get('/questions', 'QuestionsController@index');
 
+Route::get('/isVisible', 'QuestionsController@isVisible')->name('isVisible');
+Route::get('/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion');
+
 
 //Subjects
 Route::get('/subjects', 'SubjectsController@index');

@@ -16,15 +16,8 @@ class MainController extends Controller
         $subjects = Subject::all();
 
 //        todo Реализовать подсчет колличества вопросов в теме
-        
-      /*  $questionsCount = Question::select('COUNT(*) as questionsCount', 's.body' )
-            ->from('questions as q')
-            ->join('subjects as s', 'q.subject_id', '=', 's.id')
-            ->where('q.answer', '<>', 'null')
-            ->where('q.is_visible', '=', 1)
-            ->get();*/
 
-//        Выборка всех вопросов с ответами и видимостью
+        //        Выборка всех вопросов с ответами и видимостью
 
         $questions = Question::select('q.subject_id', 'q.question', 'q.answer', 's.body as subject')
             ->from('questions as q')
