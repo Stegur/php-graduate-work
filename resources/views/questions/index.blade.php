@@ -42,7 +42,6 @@
                                         <sup><a href="{{ route('delQuestion', ['id' => $question->id]) }}">удалить</a></sup>
                                     </td>
                                     <td class="col">{{ $question->body }}
-                                        <sup><a href="#">изменить</a></sup>
                                     </td>
                                     @if($question->is_visible < 1)
                                         <td class="col bg-light">
@@ -51,8 +50,7 @@
                                         </td>
                                     @elseif(is_null($question->answer))
                                         <td class="col bg-warning">
-                                            ожидает ответа <sup><a
-                                                        href="#">ответить</a></sup>
+                                            ожидает ответа <sup><a href="#">ответить</a></sup>
                                         </td>
                                     @else
                                         <td class="col">
@@ -62,8 +60,7 @@
                                     @endif
                                     <td class="col">{{ $question->date }}</td>
                                     <td class="col small">
-                                        <a href="#">Редактировать
-                                            вопрос</a>
+                                        <a href="{{ route('editquestion', ['id' => $question->id]) }}">Редактировать вопрос</a>
                                     </td>
                                 </tr>
                             @endforeach

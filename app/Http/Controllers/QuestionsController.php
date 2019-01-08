@@ -15,7 +15,7 @@ class QuestionsController extends Controller
             ->select('*', 'q.created_at as date', 'q.id as id')
             ->orderBy('q.subject_id')
             ->get();
-        //dd($questions);
+
         return view('/questions/index', ['questions' => $questions]);
     }
 
@@ -36,5 +36,27 @@ class QuestionsController extends Controller
             ->delete();
 
         return redirect('/questions');
+    }
+
+    public function editQuestion(Request $request)
+    {
+        $questions = DB::table('questions as q')
+            ->join('subjects as s', 's.id', '=', 'q.subject_id')
+            ->select('*', 'q.created_at as date', 'q.id as id')
+            ->where('q.id', '=', $request->id)
+            ->get();
+
+        $subjects = DB::table('subjects as s')
+            ->select('s.id', 's.body as body')
+            ->get();
+
+//dd($subjects);
+        return view('/questions/editquestion', ['questions' => $questions, 'subjects' => $subjects]);
+    }
+
+    public function updatequestion(Request $request)
+    {
+
+        dd($request);
     }
 }

@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="container">
-        <div class="row justify-
-    -center">
+        <div class="row justify-center">
             <div class="col-md-10">
 
                 <div class="card">
@@ -27,7 +26,7 @@
                                         <form action="{{ route('adminChangePass', ['id' => $admin->id]) }}"
                                               method="post">
                                             {{ csrf_field() }}
-                                            <input type="password" class="" name="newAdminPass">
+                                            <input type="password" class="form-control" name="newAdminPass">
                                             <button class="btn btn-secondary mt-1">Обновить</button>
                                         </form>
                                     </td>

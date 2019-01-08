@@ -39,6 +39,9 @@ Route::get('/questions', 'QuestionsController@index');
 Route::get('/isVisible', 'QuestionsController@isVisible')->name('isVisible');
 Route::get('/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion');
 
+Route::get('/editquestion', 'QuestionsController@editQuestion')->name('editquestion');
+Route::get('/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
+
 
 //Subjects
 Route::get('/subjects', 'SubjectsController@index');
