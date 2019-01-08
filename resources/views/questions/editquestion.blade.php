@@ -57,7 +57,6 @@
                                         <td class="col bg-warning">
                                             ожидает
                                             ответа
-                                            <sup><a href="#">ответить</a></sup>
                                         </td>
                                     @else
                                         <td class="col">

@@ -13,9 +13,10 @@
                     <div class="card-header clearfix">
                         Вопросы
                         <a class="float-right"
-                           href="{{ route('withOutAnswers') }}">Вопросы
-                            без
-                            ответа</a>
+                           href="{{ url('/questions') }}">Вернуться
+                            ко
+                            всем
+                            вопросам</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -50,7 +51,7 @@
                                         </td>
                                     @elseif(is_null($question->answer))
                                         <td class="col bg-warning">
-                                            ожидает ответа 
+                                            ожидает ответа
                                         </td>
                                     @else
                                         <td class="col">

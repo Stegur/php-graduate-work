@@ -13,17 +13,17 @@
 
 use Illuminate\Http\Request;
 
-//Cliens side
+// Cliens side
 Route::get('/', 'MainController@show');
 Route::get('/add', 'MainController@showCategory');
 Route::post('/add', 'MainController@addQuestion');
 
-//Home
+// Home
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Admins
+// Admins
 Route::get('/admins', 'AdminsController@index');
 
 Route::get('/addadmin', 'AdminsController@newAdmin');
@@ -33,7 +33,7 @@ Route::post('/adminChangePass', 'AdminsController@adminChangePass')->name('admin
 
 Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
 
-//Questions
+// Questions
 Route::get('/questions', 'QuestionsController@index');
 
 Route::get('/isVisible', 'QuestionsController@isVisible')->name('isVisible');
@@ -42,8 +42,10 @@ Route::get('/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion
 Route::get('/editquestion', 'QuestionsController@editQuestion')->name('editquestion');
 Route::get('/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
 
+// Answers
+Route::get('/withoutanswers', 'QuestionsController@withOutAnswers')->name('withOutAnswers');
 
-//Subjects
+// Subjects
 Route::get('/subjects', 'SubjectsController@index');
 
 Route::get('/addSubject', 'SubjectsController@newSubject');

@@ -50,7 +50,6 @@ class QuestionsController extends Controller
             ->select('s.id', 's.body as body')
             ->get();
 
-//dd($subjects);
         return view('/questions/editquestion', ['questions' => $questions, 'subjects' => $subjects]);
     }
 
@@ -59,4 +58,21 @@ class QuestionsController extends Controller
 
         dd($request);
     }
+
+    public function withOutAnswers()
+    {
+        $questions = DB::table('questions as q')
+            ->join('subjects as s', 's.id', '=', 'q.subject_id')
+            ->select('*', 'q.created_at as date', 'q.id as id')
+            ->whereNull('q.answer')
+            ->orderBy('q.created_at')
+            ->get();
+
+        $subjects = DB::table('subjects as s')
+            ->select('s.id', 's.body as body')
+            ->get();
+
+        return view('/questions/withoutanswers', ['questions' => $questions, 'subjects' => $subjects]);
+    }
+
 }
