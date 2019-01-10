@@ -9,7 +9,6 @@
 
 
                 <div class="card mt-5">
-                    {{--todo сделать подсчет вопросов без ответа--}}
                     <div class="card-header clearfix">
                         Вопросы
                         <a class="float-right"
@@ -66,65 +65,46 @@
                                     <td class="col">{{ $question->login }}</td>
                                     <td class="col">{{ $question->date}}</td>
                                 </tr>
-
-                                <form action="#"
-                                      method="post"
-                                      class="form-inline">
-                                    {{ csrf_field() }}
-                                    <tr class="row">
-                                        <td class="col-5"><textarea
-                                                    class="form-control"
-                                                    rows="3"
-                                                    cols="55"
-                                                    name="question">{{ $question->question }}</textarea>
-                                        </td>
-
-                                        <td class="col">
-                                            <select class="form-control"
-                                                    name="subject">
-                                                @foreach($subjects as $subject)
-                                                    @if($subject->body == $question->body )
-                                                        <option selected>{{ $subject->body }}</option>
-                                                    @endif
-                                                    <option>{{ $subject->body }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td class="col">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   value="{{ $question->answer }}"
-                                                   name="answer">
-                                        </td>
-                                        <td class="col">
-                                            <input type="checkbox"
-                                                   class="form-control"
-                                                   name="visible">
-                                        </td>
-                                        <td class="col">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   value="{{ $question->login }}"
-                                                   name="login">
-                                        </td>
-                                        <td class="col">
-                                            <input type="text"
-                                                   class="form-control"
-                                                   value="{{ $question->date}}"
-                                                   name="date">
-                                        </td>
-                                    </tr>
-                                    <tr class="row">
-                                        <td class="col">
-                                            <button type="submit"
-                                                    class="btn btn-secondary">
-                                                Изменить
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </form>
-                            @endforeach
                         </table>
+
+                        <form action="{{ route('updatequestion', ['id' => $question-> id]) }}"
+                              method="post"
+                              class="form-inline">
+                            {{ csrf_field() }}
+                            <textarea
+                                    class="form-control mr-3"
+                                    rows="3"
+                                    cols="50"
+                                    name="question">{{ $question->question }}</textarea>
+
+                            <select class="form-control mr-3"
+                                    name="subject">
+                                @foreach($subjects as $subject)
+                                    @if($subject->body == $question->body )
+                                        <option value="{{ $subject->id }}" selected>{{ $subject->body }}</option>
+                                    @endif
+                                    <option value="{{ $subject->id }}">{{ $subject->body }}</option>
+                                @endforeach
+                            </select>
+                            <input type="text"
+                                   class="form-control mr-3"
+                                   value="{{ $question->answer }}"
+                                   name="answer">
+                            <input type="checkbox"
+                                   class="form-control mr-3"
+                                   name="is_visible">
+                            <input type="text"
+                                   class="form-control mr-3"
+                                   value="{{ $question->login }}"
+                                   name="login">
+                            <button type="submit"
+                                    class="btn btn-secondary">
+                                Изменить
+                            </button>
+                        </form>
+
+                        @endforeach
+
                     </div>
                 </div>
 

@@ -19,6 +19,7 @@ class QuestionsController extends Controller
         return view('/questions/index', ['questions' => $questions]);
     }
 
+    // делаем вопрос видимым
     public function isVisible(Request $request)
     {
         $isVisible = $request->is_visible ? 0 : 1;
@@ -29,6 +30,7 @@ class QuestionsController extends Controller
         return redirect('/questions');
     }
 
+    // удаляем вопрос
     public function delQuestion(Request $request)
     {
         DB::table('questions')
@@ -38,6 +40,7 @@ class QuestionsController extends Controller
         return redirect('/questions');
     }
 
+    // вопросы для редактирования
     public function editQuestion(Request $request)
     {
         $questions = DB::table('questions as q')
@@ -53,12 +56,31 @@ class QuestionsController extends Controller
         return view('/questions/editquestion', ['questions' => $questions, 'subjects' => $subjects]);
     }
 
+    // редактируем вопросы
     public function updatequestion(Request $request)
     {
+        $question = $request->input('question');
+        $subject = $request->input('subject');
+        $answer = $request->input('answer');
+        $is_visible = $request->input('is_visible') ? 1 : 0;
+        $login = $request->input('login');
+        $id = $request->input('id');
 
-        dd($request);
+        DB::table('questions')
+            ->where('id', $id)
+            ->update(
+                [
+                    'question' => $question,
+                    'subject_id' => $subject,
+                    'answer' => $answer,
+                    'is_visible' => $is_visible,
+                    'login' => $login
+                ]);
+
+        return redirect('/questions');
     }
 
+    // делаем подборку вопросов без ответов
     public function withOutAnswers()
     {
         $questions = DB::table('questions as q')

@@ -40,7 +40,7 @@ Route::get('/isVisible', 'QuestionsController@isVisible')->name('isVisible');
 Route::get('/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion');
 
 Route::get('/editquestion', 'QuestionsController@editQuestion')->name('editquestion');
-Route::get('/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
+Route::post('/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
 
 // Answers
 Route::get('/withoutanswers', 'QuestionsController@withOutAnswers')->name('withOutAnswers');

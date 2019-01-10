@@ -26,48 +26,47 @@ class AdminsController extends Controller
     // Добавление нового администратора
     public function addAdmin(Request $request)
     {
-        
+
         $validatior = Validator::make($request->all(), [
             'login' => 'required|max:50',
             'email' => 'required',
             'password' => 'required|min:6'
         ]);
-        
+
         if ($validatior->fails()) {
             return redirect('addadmin')
                 ->withInput()
                 ->withErrors($validatior);
         }
 //        todo как отлавливать ошибки при создании нового администратора, email существует
-        
+
         $admin = new User();
         $admin->name = $request->login;
         $admin->email = $request->email;
         $admin->password = bcrypt($request->password);
         $admin->save();
 
-//       todo $newAdminSuccess = 'Вы успешно добавили нового администратора';
-        
+
         return redirect('/admins');
     }
 
-//    Изменение пароля администраторов
-    
+    // изменение пароля администраторов
     public function adminChangePass(Request $request)
     {
         DB::table('users')
             ->where('id', '=', $request->id)
             ->update(['password' => bcrypt($request->newAdminPass)]);
-        
+
         return redirect('/admins');
     }
-    
+
+    // удаляем администратора
     public function delAdmin(Request $request) // удаление администратора
     {
         DB::table('users')
             ->where('id', '=', $request->id)
             ->delete();
-        
+
         return redirect('/admins');
     }
 }

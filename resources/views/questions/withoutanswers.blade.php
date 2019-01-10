@@ -7,9 +7,7 @@
         <div class="row justify-center">
             <div class="col-md-12">
 
-
                 <div class="card mt-5">
-                    {{--todo сделать подсчет вопросов без ответа--}}
                     <div class="card-header clearfix">
                         Вопросы
                         <a class="float-right"
@@ -51,7 +49,11 @@
                                         </td>
                                     @elseif(is_null($question->answer))
                                         <td class="col bg-warning">
-                                            ожидает ответа
+                                            ожидает
+                                            ответа<sup><a
+                                                        href="{{ route('editquestion', ['id' => $question->id]) }}">
+                                                    ответить</a></sup>
+
                                         </td>
                                     @else
                                         <td class="col">
@@ -61,7 +63,8 @@
                                     @endif
                                     <td class="col">{{ $question->date }}</td>
                                     <td class="col small">
-                                        <a href="{{ route('editquestion', ['id' => $question->id]) }}">Редактировать вопрос</a>
+                                        <a href="{{ route('editquestion', ['id' => $question->id]) }}">Редактировать
+                                            вопрос</a>
                                     </td>
                                 </tr>
                             @endforeach

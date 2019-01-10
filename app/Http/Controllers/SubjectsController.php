@@ -37,23 +37,25 @@ class SubjectsController extends Controller
 
 
         $subjects = [];
-        foreach ($subjectsAll as $key => $item){
+
+        foreach ($subjectsIds as $key => $item) {
+            $subjects[$item->body]['id'] = $item->id;
+            $subjects[$item->body]['all'] = 0;
+            $subjects[$item->body]['allWithoutHidden'] = 0;
+            $subjects[$item->body]['allWithoutAnswer'] = 0;
+        }
+
+        foreach ($subjectsAll as $key => $item) {
             $subjects[$item->body]['all'] = $item->count;
         }
 
-        foreach ($subjectsWithoutHidden as $key => $item){
+        foreach ($subjectsWithoutHidden as $key => $item) {
             $subjects[$item->body]['allWithoutHidden'] = $item->count;
         }
 
-        foreach ($subjectsWithoutAnswer as $key => $item){
+        foreach ($subjectsWithoutAnswer as $key => $item) {
             $subjects[$item->body]['allWithoutAnswer'] = $item->count;
         }
-
-        foreach ($subjectsIds as $key => $item){
-            $subjects[$item->body]['id'] = $item->id;
-        }
-
-        //dd($subjects);
 
         return view('/subjects/index', [
             'subjects' => $subjects
@@ -74,8 +76,6 @@ class SubjectsController extends Controller
         $subject = new Subject();
         $subject->body = $request->body;
         $subject->save();
-
-    //       todo $newSubjectSuccess = 'Вы успешно добавили новую тему';
 
         return redirect('/subjects');
     }

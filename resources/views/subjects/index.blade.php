@@ -8,29 +8,41 @@
 
 
                 <div class="card mt-5">
-                    <div class="card-header clearfix">Темы <a class="float-right" href="{{ url('/addSubject') }}">Добавить тему</a>
+                    <div class="card-header clearfix">
+                        Темы
+                        <a class="float-right"
+                           href="{{ url('/addSubject') }}">Добавить
+                            тему</a>
                     </div>
 
                     <div class="card-body">
                         <table class="table">
                             <tr class="row text-center">
-                                <td class="col">Тема</td>
-                                <td class="col">Всего вопросов</td>
-                                <td class="col">Опубликованно вопросов</td>
-                                <td class="col">Вопросов без ответа</td>
+                                <td class="col">
+                                    Тема
+                                </td>
+                                <td class="col">
+                                    Всего
+                                    вопросов
+                                </td>
+                                <td class="col">
+                                    Опубликованно
+                                    вопросов
+                                </td>
+                                <td class="col">
+                                    Вопросов
+                                    без
+                                    ответа
+                                </td>
                             </tr>
                             @foreach($subjects as $name => $count)
-{{--                                @dd($count)--}}
                                 <tr class="row text-center">
-                                    <td class="col">{{ $name }} <sup><a href="{{ route('delSubject', ['id' => $count['id']]) }}">Удалить</a></sup></td>
+                                    <td class="col">{{ $name }}
+                                        <sup><a href="{{ route('delSubject', ['id' => $count['id']]) }}">Удалить</a></sup>
+                                    </td>
                                     <td class="col">{{ $count['all'] }}</td>
                                     <td class="col">{{ $count['allWithoutHidden'] }}</td>
-                                    @if(isset($count['allWithoutAnswer'])) {
                                     <td class="col">{{ $count['allWithoutAnswer'] }}</td>
-                                    } @else {
-                                    <td class="col">0</td>
-                                    }
-                                    @endif
                                 </tr>
                             @endforeach
                         </table>
