@@ -38,7 +38,6 @@ class AdminsController extends Controller
                 ->withInput()
                 ->withErrors($validatior);
         }
-//        todo как отлавливать ошибки при создании нового администратора, email существует
 
         $admin = new User();
         $admin->name = $request->login;

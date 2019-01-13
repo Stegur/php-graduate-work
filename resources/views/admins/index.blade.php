@@ -8,7 +8,7 @@
 
                 <div class="card">
                     <div class="card-header clearfix">Администраторы
-                        <a class="float-right" href="{{ url('/addadmin') }}">Добавить администратора</a>
+                        <a class="float-right" href="{{ route('addadmin') }}">Добавить администратора</a>
                     </div>
 
                     <div class="card-body">
@@ -20,7 +20,7 @@
                             </tr>
                             @foreach($admins as $admin)
                                 <tr class="row">
-                                    <td class="col-4">{{ $admin->name }} <sup><a href="{{ route('delAdmin', ['id' => $admin->id]) }}">Удалить</a></sup></td>
+                                    <td class="col-4">{{ $admin->name }} <sup><a href="{{ route('delAdmin', ['id' => $admin->id]) }}">удалить</a></sup></td>
                                     <td class="col-4">{{ $admin->email }}</td>
                                     <td class="col-4">
                                         <form action="{{ route('adminChangePass', ['id' => $admin->id]) }}"

@@ -27,14 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $admins = User::all();
-        $subjects = Subject::all();
-        $questions = Question::all();
-        return view('home', [
-            'admins' => $admins,
-            'subjects' => $subjects,
-            'questions' => $questions
-        ]);
+        return view('home');
     }
     
     

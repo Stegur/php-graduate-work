@@ -4,10 +4,10 @@
 
     <div class="container">
         <div class="clearfix">
-            <a class="nav-link bg-secondary text-white float-right" href="{{ url('/home') }}">Вернуться на главную</a>
+            <a class="nav-link bg-secondary text-white float-right" href="{{ route('subjects') }}">Вернуться к темам</a>
         </div>
 
-        <form action="{{ url('addSubject') }}" method="post">
+        <form action="{{ route('addSubject') }}" method="post">
             {{ csrf_field() }}
 
             <div class="form-group">

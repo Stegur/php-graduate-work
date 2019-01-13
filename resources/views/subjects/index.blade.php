@@ -11,7 +11,7 @@
                     <div class="card-header clearfix">
                         Темы
                         <a class="float-right"
-                           href="{{ url('/addSubject') }}">Добавить
+                           href="{{ route('addSubject') }}">Добавить
                             тему</a>
                     </div>
 
@@ -38,7 +38,7 @@
                             @foreach($subjects as $name => $count)
                                 <tr class="row text-center">
                                     <td class="col">{{ $name }}
-                                        <sup><a href="{{ route('delSubject', ['id' => $count['id']]) }}">Удалить</a></sup>
+                                        <sup><a href="{{ route('delSubject', ['id' => $count['id']]) }}">удалить</a></sup>
                                     </td>
                                     <td class="col">{{ $count['all'] }}</td>
                                     <td class="col">{{ $count['allWithoutHidden'] }}</td>

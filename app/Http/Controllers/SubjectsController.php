@@ -66,7 +66,7 @@ class SubjectsController extends Controller
     public function newSubject()
     {
 
-        return view('/subjects/addSubject');
+        return view('/subjects/addsubject');
     }
 
     // Добавление новой темы
@@ -84,11 +84,11 @@ class SubjectsController extends Controller
     public function delSubject(Request $request)
     {
         DB::table('subjects')
-            ->where('id', '=', $request->id)
+            ->where('id', $request->id)
             ->delete();
 
         DB::table('questions')
-            ->where('subject_id', '=', $request->id)
+            ->where('subject_id', $request->id)
             ->delete();
 
         return redirect('/subjects/');

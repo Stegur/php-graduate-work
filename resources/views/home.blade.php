@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <p>
                         Управление
-                        Темами</p>
+                        темами</p>
                 </div>
                 <div class="card-body">
                     <a class="btn btn-secondary"
@@ -33,7 +33,7 @@
                 <div class="card-header">
                     <p>
                         Управление
-                        Вопросами</p>
+                        вопросами</p>
                 </div>
                 <div class="card-body">
                     <a class="btn btn-secondary"

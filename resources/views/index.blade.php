@@ -30,14 +30,7 @@
             </td>
 
             <td class="col-9">
-                {{--todo Сделать сообщение после добавлнеия нового вопроса--}}
-                {{--@if(isset($done))--}}
 
-                    {{--<div class="bg-success text-white text-center">--}}
-                        {{--{{ $done  }}--}}
-                    {{--</div>--}}
-
-                {{--@endif--}}
                 @foreach($questions as $subject => $value)
                     <div class="card-header text-center" id="{{ $value['id'] }}">{{ $subject }}</div>
                     @foreach($value['question'] as $question)

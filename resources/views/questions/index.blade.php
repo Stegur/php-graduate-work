@@ -9,7 +9,6 @@
 
 
                 <div class="card mt-5">
-                    {{--todo сделать подсчет вопросов без ответа--}}
                     <div class="card-header clearfix">
                         Вопросы
                         <a class="float-right"

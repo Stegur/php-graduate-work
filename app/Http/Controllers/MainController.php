@@ -11,13 +11,11 @@ class MainController extends Controller
 {
     public function show()
     {
-//        Запрос всех тем из БД для меню тем
+        //  Запрос всех тем из БД для меню тем
 
         $subjects = Subject::all();
 
-//        todo Реализовать подсчет колличества вопросов в теме
-
-        //        Выборка всех вопросов с ответами и видимостью
+        // Выборка всех вопросов с ответами и видимостью
 
         $questions = Question::select('q.subject_id', 'q.question', 'q.answer', 's.body as subject')
             ->from('questions as q')
@@ -64,8 +62,6 @@ class MainController extends Controller
         $question->subject_id = $request->subject_id;
         $question->question = $request->question;
         $question->save();
-
-//       todo $done = "Ваш вопрос добавлен, как только на него ответит администратор, он появится в списке в соответствующей категории";
 
         return redirect('/');
     }

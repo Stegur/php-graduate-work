@@ -26,29 +26,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Admins
 Route::get('/admins', 'AdminsController@index');
 
-Route::get('/addadmin', 'AdminsController@newAdmin');
+Route::get('/admins/addadmin', 'AdminsController@newAdmin')->name('addadmin');
 Route::post('/addadmin', 'AdminsController@addAdmin');
 
-Route::post('/adminChangePass', 'AdminsController@adminChangePass')->name('adminChangePass');
+Route::post('/admins/adminchangepass', 'AdminsController@adminChangePass')->name('adminChangePass');
 
-Route::get('/delAdmin', 'AdminsController@delAdmin')->name('delAdmin');
+Route::get('/admins/deladmin', 'AdminsController@delAdmin')->name('delAdmin');
 
 // Questions
 Route::get('/questions', 'QuestionsController@index');
 
-Route::get('/isVisible', 'QuestionsController@isVisible')->name('isVisible');
-Route::get('/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion');
+Route::get('/questions/isVisible', 'QuestionsController@isVisible')->name('isVisible');
+Route::get('/questions/delQuestion', 'QuestionsController@delQuestion')->name('delQuestion');
 
-Route::get('/editquestion', 'QuestionsController@editQuestion')->name('editquestion');
-Route::post('/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
+Route::get('/questions/editquestion', 'QuestionsController@editQuestion')->name('editquestion');
+Route::post('/questions/updatequestion', 'QuestionsController@updatequestion')->name('updatequestion');
 
-// Answers
-Route::get('/withoutanswers', 'QuestionsController@withOutAnswers')->name('withOutAnswers');
+Route::get('/questions/withoutanswers', 'QuestionsController@withOutAnswers')->name('withOutAnswers');
 
 // Subjects
-Route::get('/subjects', 'SubjectsController@index');
+Route::get('/subjects', 'SubjectsController@index')->name('subjects');
 
-Route::get('/addSubject', 'SubjectsController@newSubject');
-Route::post('/addSubject', 'SubjectsController@addSubject');
+Route::get('/subjects/addsubject', 'SubjectsController@newSubject')->name('addSubject');
+Route::post('/subjects/addsubject', 'SubjectsController@addSubject');
 
-Route::get('/delSubject', 'SubjectsController@delSubject')->name('delSubject');
+Route::get('/subjects/delsubject', 'SubjectsController@delSubject')->name('delSubject');
